@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "260593628548",
+    "firebase_url": "https://gpsapp-copy.firebaseio.com",
+    "project_id": "gpsapp-copy",
+    "storage_bucket": "gpsapp-copy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260593628548:android:fa6f24bbfb2708d4",
+        "android_client_info": {
+          "package_name": "derekokelly.nuigalway.ie.gps_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "260593628548-0l0nu0dmbip7v8cnjkk10uhqaf268ipp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "derekokelly.nuigalway.ie.gps_app",
+            "certificate_hash": "f19ceb0bd2f5b4afb879c7297f84a88a2bee51d2"
+          }
+        },
+        {
+          "client_id": "260593628548-hngr2sncldb60rieaui0mlpo6v0acdms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJB5dnAxiZIsxns8bQbmQGZ-xiNvxOiJY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "260593628548-hngr2sncldb60rieaui0mlpo6v0acdms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
