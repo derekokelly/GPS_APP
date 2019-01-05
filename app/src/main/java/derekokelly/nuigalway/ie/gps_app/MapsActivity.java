@@ -34,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener {
@@ -42,6 +43,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ProgressDialog LocationDialog;
     private Marker markerLocation;
     private DatabaseReference mDatabase;
+    private SimpleDateFormat format;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference();
 
+        format = new SimpleDateFormat("dd/MM/YYYY, HH:mm:ss");
+
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -69,9 +73,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                    String label = String.valueOf(ld.latitude);
                     long epoch = Long.parseLong(ds.getKey());
                     Timestamp ts = new Timestamp(epoch);
-                    String label = ts.toString();
+                    String label = format.format(ts);
 
-                    mMap.addMarker((new MarkerOptions().position(lastLocation).title(label)));
+                    mMap.addMarker((new MarkerOptions().position(lastLocation).title(label)).icon(BitmapDescriptorFactory.defaultMarker((int) Math.floor(Math.random() * 360))));
 //            ArrayList<Double> arr = new ArrayList<>();
 //            arr.add(ld.getLatitude());
 //            arr.add(ld.getLongitude());
@@ -147,9 +151,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         markerOptions.position(latLng);
         markerOptions.title("New Location");
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-        if (mMap != null)
-            markerLocation = mMap.addMarker(markerOptions);
-
+        if (mMap != null) {
+            //markerLocation = mMap.addMarker(markerOptions);
+        }
 
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(new LatLng(latLng.latitude, latLng.longitude))
@@ -163,7 +167,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onLocationChanged(Location location) {
         LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
-        //addMarker(latLng);
+        addMarker(latLng);
 
         LocationData locationData = new LocationData(location.getLatitude(), location.getLongitude());
         String key = String.valueOf(System.currentTimeMillis());
